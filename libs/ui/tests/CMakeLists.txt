@@ -31,186 +31,156 @@ ecm_add_tests(
     LINK_LIBRARIES kritaui kritaimage Qt5::Test
 )
 
-########### next target ###############
 
-set(kis_node_model_test_SRCS kis_node_model_test.cpp modeltest.cpp )
-kde4_add_broken_unit_test(kis_node_model_test TESTNAME krita-ui-kis_node_model_test  ${kis_node_model_test_SRCS})
-target_link_libraries(kis_node_model_test    kritaui Qt5::Test)
+ecm_add_test( kis_selection_decoration_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp
+    TEST_NAME krita-ui-KisSelectionDecorationTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-########### next target ###############
+ecm_add_test( kis_node_dummies_graph_test.cpp ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-ui-KisNodeDummiesGraphTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-set(kis_shape_controller_test_SRCS kis_shape_controller_test.cpp kis_dummies_facade_base_test.cpp)
-kde4_add_broken_unit_test(kis_shape_controller_test TESTNAME krita-ui-kis_shape_controller_test  ${kis_shape_controller_test_SRCS})
-target_link_libraries(kis_shape_controller_test    kritaimage kritaui Qt5::Test)
+ecm_add_test( kis_node_shapes_graph_test.cpp ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-ui-KisNodeShapesGraphTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-########### next target ###############
+ecm_add_test( kis_model_index_converter_test.cpp ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-ui-KisModelIndexConverterTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-set(kis_prescaled_projection_test_SRCS kis_prescaled_projection_test.cpp )
-kde4_add_broken_unit_test(KisPrescaledProjectionTest TESTNAME krita-ui-kis_prescaled_projection_test ${kis_prescaled_projection_test_SRCS})
-target_link_libraries(KisPrescaledProjectionTest   kritaui Qt5::Test)
+ecm_add_test( kis_categorized_list_model_test.cpp modeltest.cpp
+    TEST_NAME krita-ui-KisCategorizedListModelTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-########### next target ###############
+ecm_add_test( kis_resource_server_provider_test.cpp modeltest.cpp
+    TEST_NAME krita-ui-KisResourceServerProviderTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
 
-set(kis_kra_loader_test_SRCS kis_kra_loader_test.cpp )
-kde4_add_broken_unit_test(KisKraLoaderTest TESTNAME krita-ui-KisKraLoaderTest ${kis_kra_loader_test_SRCS})
-target_link_libraries(KisKraLoaderTest   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_kra_saver_test_SRCS kis_kra_saver_test.cpp )
-kde4_add_broken_unit_test(KisKraSaverTest TESTNAME krita-ui-KisKraSaverTest ${kis_kra_saver_test_SRCS})
-target_link_libraries(KisKraSaverTest   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_exiv2_test_SRCS kis_exiv2_test.cpp )
-kde4_add_broken_unit_test(KisExiv2Test TESTNAME krita-ui-KisExiv2Test ${kis_exiv2_test_SRCS})
-target_link_libraries(KisExiv2Test   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_clipboard_test_SRCS kis_clipboard_test.cpp )
-kde4_add_broken_unit_test(KisClipboardTest TESTNAME krita-ui-KisClipboardTest  ${kis_clipboard_test_SRCS})
-target_link_libraries(KisClipboardTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(freehand_stroke_test_SRCS freehand_stroke_test.cpp ${CMAKE_SOURCE_DIR}/sdk/tests/stroke_testing_utils.cpp)
-kde4_add_broken_unit_test(FreehandStrokeTest TESTNAME krita-ui-FreehandStrokeTest  ${freehand_stroke_test_SRCS})
-target_link_libraries(FreehandStrokeTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(fill_processing_visitor_test_SRCS fill_processing_visitor_test.cpp ${CMAKE_SOURCE_DIR}/sdk/tests/stroke_testing_utils.cpp)
-kde4_add_broken_unit_test(FillProcessingVisitorTest TESTNAME krita-ui-FillProcessingVisitorTest  ${fill_processing_visitor_test_SRCS})
-target_link_libraries(FillProcessingVisitorTest kritaui kritaimage Qt5::Test)
-
-
-########### next target ###############
-
-set(filter_stroke_test_SRCS filter_stroke_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp)
-kde4_add_broken_unit_test(FilterStrokeTest TESTNAME krita-ui-FilterStrokeTest  ${filter_stroke_test_SRCS})
-target_link_libraries(FilterStrokeTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_selection_manager_test_SRCS kis_selection_manager_test.cpp)
-kde4_add_broken_unit_test(KisSelectionManagerTest TESTNAME krita-ui-KisSelectionManagerTest  ${kis_selection_manager_test_SRCS})
-target_link_libraries(KisSelectionManagerTest    kritaui kritaimage Qt5::Test)
-#set_tests_properties(krita-ui-KisSelectionManagerTest PROPERTIES TIMEOUT 300)
-
-########### next target ###############
-
-set(kis_selection_decoration_test_SRCS kis_selection_decoration_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp)
-kde4_add_unit_test(KisSelectionDecorationTest TESTNAME krita-ui-KisSelectionDecorationTest  ${kis_selection_decoration_test_SRCS})
-target_link_libraries(KisSelectionDecorationTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_node_manager_test_SRCS kis_node_manager_test.cpp)
-kde4_add_broken_unit_test(KisNodeManagerTest TESTNAME krita-ui-KisNodeManagerTest  ${kis_node_manager_test_SRCS})
-target_link_libraries(KisNodeManagerTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_node_dummies_graph_test_SRCS kis_node_dummies_graph_test.cpp ../../../sdk/tests/testutil.cpp)
-kde4_add_unit_test(KisNodeDummiesGraphTest TESTNAME krita-ui-KisNodeDummiesGraphTest  ${kis_node_dummies_graph_test_SRCS})
-target_link_libraries(KisNodeDummiesGraphTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_node_shapes_graph_test_SRCS kis_node_shapes_graph_test.cpp ../../../sdk/tests/testutil.cpp)
-kde4_add_unit_test(KisNodeShapesGraphTest TESTNAME krita-ui-KisNodeShapesGraphTest  ${kis_node_shapes_graph_test_SRCS})
-target_link_libraries(KisNodeShapesGraphTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_dummies_facade_test_SRCS kis_dummies_facade_test.cpp kis_dummies_facade_base_test.cpp ../../../sdk/tests/testutil.cpp)
-kde4_add_broken_unit_test(KisDummiesFacadeTest TESTNAME krita-ui-KisDummiesFacadeTest  ${kis_dummies_facade_test_SRCS})
-target_link_libraries(KisDummiesFacadeTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_model_index_converter_test_SRCS kis_model_index_converter_test.cpp ../../../sdk/tests/testutil.cpp)
-kde4_add_unit_test(KisModelIndexConverterTest TESTNAME krita-ui-KisModelIndexConverterTest  ${kis_model_index_converter_test_SRCS})
-target_link_libraries(KisModelIndexConverterTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_zoom_and_pan_test_SRCS kis_zoom_and_pan_test.cpp ../../../sdk/tests/testutil.cpp)
-kde4_add_broken_unit_test(KisZoomAndPanTest TESTNAME krita-ui-KisZoomAndPanTest  ${kis_zoom_and_pan_test_SRCS})
-target_link_libraries(KisZoomAndPanTest    kritaui kritaimage Qt5::Test)
-#set_tests_properties(krita-ui-KisZoomAndPanTest PROPERTIES TIMEOUT 300)
-
-########### next target ###############
-
-# set(kis_input_manager_test_SRCS kis_input_manager_test.cpp ../../sdk/tests/testutil.cpp)
-# kde4_add_unit_test(KisInputManagerTest TESTNAME krita-ui-KisInputManagerTest  ${kis_input_manager_test_SRCS})
-# target_link_libraries(KisInputManagerTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_action_manager_test_SRCS kis_action_manager_test.cpp )
-kde4_add_broken_unit_test(KisActionManagerTest TESTNAME krita-ui-KisActionManagerTest  ${kis_action_manager_test_SRCS})
-target_link_libraries(KisActionManagerTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_categories_mapper_test_SRCS kis_categories_mapper_test.cpp testing_categories_mapper.cpp)
-kde4_add_broken_unit_test(KisCategoriesMapperTest TESTNAME krita-ui-KisCategoriesMapperTest  ${kis_categories_mapper_test_SRCS})
-target_link_libraries(KisCategoriesMapperTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_categorized_list_model_test_SRCS kis_categorized_list_model_test.cpp modeltest.cpp)
-kde4_add_unit_test(KisCategorizedListModelTest TESTNAME krita-ui-KisCategorizedListModelTest  ${kis_categorized_list_model_test_SRCS})
-target_link_libraries(KisCategorizedListModelTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_resource_server_provider_test_SRCS kis_resource_server_provider_test.cpp modeltest.cpp)
-kde4_add_unit_test(KisResourceServerProviderTest TESTNAME krita-ui-KisResourceServerProviderTest  ${kis_resource_server_provider_test_SRCS})
-target_link_libraries(KisResourceServerProviderTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_asl_layer_style_serializer_test_SRCS kis_asl_layer_style_serializer_test.cpp )
-kde4_add_broken_unit_test(KisAslLayerStyleSerializerTest TESTNAME krita-ui-KisAslLayerStyleSerializerTest ${kis_asl_layer_style_serializer_test_SRCS})
-target_link_libraries(KisAslLayerStyleSerializerTest kritaui kritaimage ${QT_QTTEST_LIBRARY})
-
-########### next target ###############
-
-set(kis_node_juggler_compressed_test_SRCS kis_node_juggler_compressed_test.cpp  ../../../sdk/tests/testutil.cpp)
-kde4_add_unit_test(KisNodeJugglerCompressedTest TESTNAME krita-image-BaseNodeTest ${kis_node_juggler_compressed_test_SRCS})
-target_link_libraries(KisNodeJugglerCompressedTest kritaimage kritaui Qt5::Test)
-
-########### next target ###############
+ecm_add_test( kis_node_juggler_compressed_test.cpp  ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-image-BaseNodeTest
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
 
 set(kis_node_view_test_SRCS kis_node_view_test.cpp  ../../../sdk/tests/testutil.cpp)
 qt5_add_resources(kis_node_view_test_SRCS ${krita_QRCS})
-kde4_add_unit_test(KisNodeViewTest TESTNAME krita-image-BaseNodeTest ${kis_node_view_test_SRCS})
-target_link_libraries(KisNodeViewTest kritaimage kritaui Qt5::Test)
+ecm_add_test(${kis_node_view_test_SRCS}
+    TEST_NAME krita-image-kis_node_view_test
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
 
-########### next target ###############
 
-set(kis_animation_exporter_test_SRCS kis_animation_exporter_test.cpp )
-kde4_add_broken_unit_test(KisAnimationExporterTest TESTNAME kritaui-animation_exporter_test ${kis_animation_exporter_test_SRCS})
-target_link_libraries(KisAnimationExporterTest kritaui kritaimage ${QT_QTTEST_LIBRARY})
 
-########### next target ###############
+##### Tests that currently fail and should be fixed #####
 
-set(kis_animation_importer_test_SRCS kis_animation_importer_test.cpp )
-kde4_add_broken_unit_test(KisAnimationImporterTest TESTNAME kritaui-animation_importer_test ${kis_animation_importer_test_SRCS})
-target_link_libraries(KisAnimationImporterTest kritaui kritaimage ${QT_QTTEST_LIBRARY})
+include(KritaAddBrokenUnitTest)
 
-########### next target ###############
+krita_add_broken_unit_test(
+    kis_node_model_test.cpp modeltest.cpp
+    TEST_NAME krita-ui-kis_node_model_test
+    LINK_LIBRARIES kritaui Qt5::Test)
 
-set(kis_animation_frame_cache_test_SRCS kis_animation_frame_cache_test.cpp )
-kde4_add_broken_unit_test(KisAnimationFrameCacheTest TESTNAME kritaui-animation_frame_cache_test ${kis_animation_frame_cache_test_SRCS})
-target_link_libraries(KisAnimationFrameCacheTest kritaui kritaimage ${QT_QTTEST_LIBRARY})
+krita_add_broken_unit_test(
+    kis_shape_controller_test.cpp kis_dummies_facade_base_test.cpp
+    TEST_NAME krita-ui-kis_shape_controller_test
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
 
-########### next target ###############
+krita_add_broken_unit_test(
+    kis_prescaled_projection_test.cpp
+    TEST_NAME krita-ui-kis_prescaled_projection_test
+    LINK_LIBRARIES kritaui Qt5::Test)
 
-set(ResourceBundleTest_SRCS ResourceBundleTest.cpp)
-kde4_add_broken_unit_test(ResourceBundleTest TESTNAME krita-resourcemanager-ResourceBundleTest ${ResourceBundleTest_SRCS})
-target_link_libraries(ResourceBundleTest kritaui kritalibbrush kritalibpaintop Qt5::Test )
+krita_add_broken_unit_test(
+    kis_kra_loader_test.cpp
+    TEST_NAME krita-ui-KisKraLoaderTest
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_kra_saver_test.cpp
+    TEST_NAME krita-ui-KisKraSaverTest
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_exiv2_test.cpp
+    TEST_NAME krita-ui-KisExiv2Test
+    LINK_LIBRARIES kritaimage kritaui Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_clipboard_test.cpp
+    TEST_NAME krita-ui-KisClipboardTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    freehand_stroke_test.cpp ${CMAKE_SOURCE_DIR}/sdk/tests/stroke_testing_utils.cpp
+    TEST_NAME krita-ui-FreehandStrokeTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    fill_processing_visitor_test.cpp ${CMAKE_SOURCE_DIR}/sdk/tests/stroke_testing_utils.cpp
+    TEST_NAME krita-ui-FillProcessingVisitorTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    filter_stroke_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp
+    TEST_NAME krita-ui-FilterStrokeTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_selection_manager_test.cpp
+    TEST_NAME krita-ui-KisSelectionManagerTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+#set_tests_properties(krita-ui-KisSelectionManagerTest PROPERTIES TIMEOUT 300)
+
+krita_add_broken_unit_test(
+    kis_node_manager_test.cpp
+    TEST_NAME krita-ui-KisNodeManagerTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_dummies_facade_test.cpp kis_dummies_facade_base_test.cpp ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-ui-KisDummiesFacadeTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_zoom_and_pan_test.cpp ../../../sdk/tests/testutil.cpp
+    TEST_NAME krita-ui-KisZoomAndPanTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+#set_tests_properties(krita-ui-KisZoomAndPanTest PROPERTIES TIMEOUT 300)
+
+krita_add_broken_unit_test(
+    kis_action_manager_test.cpp
+    TEST_NAME krita-ui-KisActionManagerTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_categories_mapper_test.cpp testing_categories_mapper.cpp
+    TEST_NAME krita-ui-KisCategoriesMapperTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_asl_layer_style_serializer_test.cpp
+    TEST_NAME krita-ui-KisAslLayerStyleSerializerTest
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_animation_exporter_test.cpp
+    TEST_NAME kritaui-animation_exporter_test
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_animation_importer_test.cpp
+    TEST_NAME kritaui-animation_importer_test
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    kis_animation_frame_cache_test.cpp
+    TEST_NAME kritaui-animation_frame_cache_test
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test)
+
+krita_add_broken_unit_test(
+    ResourceBundleTest.cpp
+    TEST_NAME krita-resourcemanager-ResourceBundleTest
+    LINK_LIBRARIES kritaui kritalibbrush kritalibpaintop Qt5::Test)
+
+# FIXME this test doesn't compile
+#ecm_add_test(
+#    kis_input_manager_test.cpp ../../../sdk/tests/testutil.cpp
+#    TEST_NAME krita-ui-KisInputManagerTest
+#    LINK_LIBRARIES kritaui kritaimage Qt5::Test)

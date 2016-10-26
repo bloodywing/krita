@@ -30,6 +30,8 @@ if(HAVE_VC)
   include_directories(${Vc_INCLUDE_DIR})
 endif()
 
+include(KDE4Macros)
+
 macro_add_unittest_definitions()
 
 set(KisRandomGeneratorDemoSources kis_random_generator_demo.cpp kimageframe.cpp)
