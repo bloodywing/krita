@@ -4,8 +4,32 @@ set( EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR} )
 include_directories(${CMAKE_SOURCE_DIR}/libs/image/metadata 
                     ${CMAKE_SOURCE_DIR}/sdk/tests )
 
+include(ECMAddTests)
 
 macro_add_unittest_definitions()
+
+ecm_add_tests(
+    kis_image_view_converter_test.cpp
+    squeezedcombobox_test.cpp
+    kis_kra_savexml_visitor_test.cpp
+    kis_shape_selection_test.cpp
+    kis_recorded_action_editor_test.cpp
+    kis_doc2_test.cpp
+    kis_coordinates_converter_test.cpp
+    kis_grid_config_test.cpp
+    kis_stabilized_events_sampler_test.cpp
+    kis_derived_resources_test.cpp
+    kis_brush_hud_properties_config_test.cpp
+    NAME_PREFIX "krita-ui-"
+    LINK_LIBRARIES kritaui Qt5::Test
+)
+
+ecm_add_tests(
+    kis_file_layer_test.cpp
+    kis_multinode_property_test.cpp
+    NAME_PREFIX "krita-ui-"
+    LINK_LIBRARIES kritaui kritaimage Qt5::Test
+)
 
 ########### next target ###############
 
@@ -15,21 +39,9 @@ target_link_libraries(kis_node_model_test    kritaui Qt5::Test)
 
 ########### next target ###############
 
-set(kis_image_view_converter_test_SRCS kis_image_view_converter_test.cpp )
-kde4_add_unit_test(KisImageViewConverterTest TESTNAME krita-ui-KisImageViewConverterTest  ${kis_image_view_converter_test_SRCS})
-target_link_libraries(KisImageViewConverterTest    kritaui Qt5::Test)
-
-########### next target ###############
-
 set(kis_shape_controller_test_SRCS kis_shape_controller_test.cpp kis_dummies_facade_base_test.cpp)
 kde4_add_broken_unit_test(kis_shape_controller_test TESTNAME krita-ui-kis_shape_controller_test  ${kis_shape_controller_test_SRCS})
 target_link_libraries(kis_shape_controller_test    kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(squeezedcombobox_test_SRCS squeezedcombobox_test.cpp )
-kde4_add_unit_test(squeezedcombobox_test TESTNAME krita-ui-squeezedcombobox_test  ${squeezedcombobox_test_SRCS})
-target_link_libraries(squeezedcombobox_test   kritaui Qt5::Test)
 
 ########### next target ###############
 
@@ -49,44 +61,11 @@ set(kis_kra_saver_test_SRCS kis_kra_saver_test.cpp )
 kde4_add_broken_unit_test(KisKraSaverTest TESTNAME krita-ui-KisKraSaverTest ${kis_kra_saver_test_SRCS})
 target_link_libraries(KisKraSaverTest   kritaimage kritaui Qt5::Test)
 
-
-########### next target ###############
-
-set(kis_kra_savexml_visitor_test_SRCS kis_kra_savexml_visitor_test.cpp )
-kde4_add_unit_test(KisKraSaveXmlVisitorTest TESTNAME krita-ui-KisKraSaveXmlVisitorTest ${kis_kra_savexml_visitor_test_SRCS})
-target_link_libraries(KisKraSaveXmlVisitorTest   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_shape_selection_test_SRCS kis_shape_selection_test.cpp )
-
-kde4_add_unit_test(KisShapeSelectionTest TESTNAME krita-ui-ShapeSelectionTest ${kis_shape_selection_test_SRCS})
-
-target_link_libraries(KisShapeSelectionTest   kritaimage kritaui Qt5::Test)
-
 ########### next target ###############
 
 set(kis_exiv2_test_SRCS kis_exiv2_test.cpp )
 kde4_add_broken_unit_test(KisExiv2Test TESTNAME krita-ui-KisExiv2Test ${kis_exiv2_test_SRCS})
 target_link_libraries(KisExiv2Test   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_recorded_action_editor_test_SRCS kis_recorded_action_editor_test.cpp )
-kde4_add_unit_test(KisRecordedActionEditorTest TESTNAME krita-ui-KisRecordedActionEditor ${kis_recorded_action_editor_test_SRCS})
-target_link_libraries(KisRecordedActionEditorTest   kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_doc2_test_SRCS kis_doc2_test.cpp )
-kde4_add_unit_test(KisDoc2Test TESTNAME krita-ui-KisDoc2Test  ${kis_doc2_test_SRCS})
-target_link_libraries(KisDoc2Test    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
-set(kis_coordinates_converter_test_SRCS kis_coordinates_converter_test.cpp )
-kde4_add_unit_test(KisCoordinatesConverterTest TESTNAME krita-ui-KisCoordinatesConverterTest  ${kis_coordinates_converter_test_SRCS})
-target_link_libraries(KisCoordinatesConverterTest    kritaui kritaimage Qt5::Test)
 
 ########### next target ###############
 
@@ -195,12 +174,6 @@ target_link_libraries(KisResourceServerProviderTest    kritaui kritaimage Qt5::T
 
 ########### next target ###############
 
-set(kis_file_layer_test_SRCS kis_file_layer_test.cpp )
-kde4_add_unit_test(KisFileLayerTest TESTNAME krita-ui-KisFileLayerTest  ${kis_file_layer_test_SRCS})
-target_link_libraries(KisFileLayerTest    kritaui kritaimage Qt5::Test)
-
-########### next target ###############
-
 set(kis_asl_layer_style_serializer_test_SRCS kis_asl_layer_style_serializer_test.cpp )
 kde4_add_broken_unit_test(KisAslLayerStyleSerializerTest TESTNAME krita-ui-KisAslLayerStyleSerializerTest ${kis_asl_layer_style_serializer_test_SRCS})
 target_link_libraries(KisAslLayerStyleSerializerTest kritaui kritaimage ${QT_QTTEST_LIBRARY})
@@ -217,18 +190,6 @@ set(kis_node_view_test_SRCS kis_node_view_test.cpp  ../../../sdk/tests/testutil.
 qt5_add_resources(kis_node_view_test_SRCS ${krita_QRCS})
 kde4_add_unit_test(KisNodeViewTest TESTNAME krita-image-BaseNodeTest ${kis_node_view_test_SRCS})
 target_link_libraries(KisNodeViewTest kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_multinode_property_test_SRCS kis_multinode_property_test.cpp)
-kde4_add_unit_test(KisMultinodePropertyTest TESTNAME krita-image-BaseNodeTest ${kis_multinode_property_test_SRCS})
-target_link_libraries(KisMultinodePropertyTest kritaimage kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_grid_config_test_SRCS kis_grid_config_test.cpp)
-kde4_add_unit_test(KisGridConfigTest TESTNAME krita-image-BaseNodeTest ${kis_grid_config_test_SRCS})
-target_link_libraries(KisGridConfigTest kritaui Qt5::Test)
 
 ########### next target ###############
 
@@ -253,22 +214,3 @@ target_link_libraries(KisAnimationFrameCacheTest kritaui kritaimage ${QT_QTTEST_
 set(ResourceBundleTest_SRCS ResourceBundleTest.cpp)
 kde4_add_broken_unit_test(ResourceBundleTest TESTNAME krita-resourcemanager-ResourceBundleTest ${ResourceBundleTest_SRCS})
 target_link_libraries(ResourceBundleTest kritaui kritalibbrush kritalibpaintop Qt5::Test )
-
-########### next target ###############
-
-set(kis_stabilized_events_sampler_test_SRCS kis_stabilized_events_sampler_test.cpp)
-kde4_add_unit_test(KisStabilizedEventsSamplerTest TESTNAME krita-ui-StabilizedEventsSamplerTest ${kis_stabilized_events_sampler_test_SRCS})
-target_link_libraries(KisStabilizedEventsSamplerTest kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_derived_resources_test_SRCS kis_derived_resources_test.cpp)
-kde4_add_unit_test(KisDerivedResourcesTest TESTNAME krita-ui-DerivedResourcesTest ${kis_derived_resources_test_SRCS})
-target_link_libraries(KisDerivedResourcesTest kritaui Qt5::Test)
-
-########### next target ###############
-
-set(kis_brush_hud_properties_config_test_SRCS kis_brush_hud_properties_config_test.cpp)
-kde4_add_unit_test(KisBrushHudPropertiesConfigTest TESTNAME krita-ui-BrushHudPropertiesConfigTest ${kis_brush_hud_properties_config_test_SRCS})
-target_link_libraries(KisBrushHudPropertiesConfigTest kritaui Qt5::Test)
-
